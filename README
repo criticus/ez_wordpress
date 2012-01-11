@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: eztexting
 Requires at least: 2.0.2
-Tested up to: 2.1
+Tested up to: 3.3.1
 Stable tag: trunk
 
 Plugin allows to send sms notifications to your subscribers when you publish a new post. 
