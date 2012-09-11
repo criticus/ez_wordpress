@@ -5,7 +5,7 @@
  * @author     Viktor <viktor@eztexting.com>
  * @copyright  2011 Ez Texting https://www.eztexting.com
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version    1.0
+ * @version    1.4
  * @since      1.0
  */
 
@@ -479,9 +479,13 @@ class EZSMSN extends EZSMSN_Plugin {
             } else {
                 $subscriber = EZSMSN_Subscribers::fetch_row_by_phone_number($phone_number);
                 if( $subscriber )
-                    $removed = EZSMSN_Subscribers::delete( $subscriber->ID );                    
-                else 
+                {
+                    $removed = EZSMSN_Subscribers::delete( $subscriber->ID );
+                }
+                else
+                {
                     $vars['error'] = sprintf( __( "We could not find the phone number %s to unsubscribe.", 'ezsmsn' ), $vars['ezsmsn_phone_number'] );
+                }
             }
         }
 

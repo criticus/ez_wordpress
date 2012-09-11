@@ -17,12 +17,10 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
-
 /**
  * Extends the WP_Widget base class in ways I find handy.
  */
 class EZSMSN_Widget extends WP_Widget {
-
 	// FORM TEMPLATE FUNCTIONS
 
 	// Fields for the admin form

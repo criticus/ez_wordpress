@@ -2,9 +2,9 @@
 /**
  * @package    Ez Texting SMS Notification plugin
  * @author     Viktor <viktor@eztexting.com>
- * @copyright  2011 Ez Texting https://www.eztexting.com
+ * @copyright  2012 Ez Texting https://www.eztexting.com
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version    1.0
+ * @version    1.4
  * @since      1.0
  */
 

@@ -3,7 +3,7 @@
 Plugin Name: Ez Texting: Sms notifications
 Plugin URI: http://www.eztexting.com/
 Description: Sms notifications.
-Version: 1.0
+Version: 1.4
 License: http://opensource.org/licenses/gpl-license.php GNU Public License
 */
 

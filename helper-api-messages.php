@@ -4,11 +4,11 @@
  * @author     Viktor <viktor@eztexting.com>
  * @copyright  2011 Ez Texting https://www.eztexting.com
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version    1.0
+ * @version    1.2
  * @since      1.0
  */
 
-/*  Copyright 2011 EzTexting
+/*  Copyright 2012 EzTexting
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

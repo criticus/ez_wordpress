@@ -28,7 +28,7 @@ class WP_Functions {
      * @see /wp-includes/functions.php
      */
     public function wp_die($message, $title = '', $args = array()) {
-        return wp_die($message, $title = '', $args = array());
+        return wp_die($message, $title, $args);
     }
 
     /**

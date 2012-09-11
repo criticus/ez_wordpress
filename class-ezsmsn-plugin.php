@@ -110,36 +110,41 @@ class EZSMSN_Plugin {
 	 * @author Simon Wheatley
 	 **/
 	public function setup( $name = '' ) {
-		if ( ! $name )
-			throw new exception( "Please pass the name parameter into the setup method." );
-		$this->name = $name;
-		// Setup the dir and url for this plugin/theme
-		if ( stripos( __FILE__, 'themes' ) ) {
-			// This is a theme
-			$this->type = 'theme';
-			$this->dir = get_stylesheet_directory();
-			$this->url = get_stylesheet_directory_uri();
-		} elseif ( stripos( __FILE__, WP_PLUGIN_DIR ) !== false ) {
-			// This is a plugin
-			$this->folder = rtrim( basename( dirname( __FILE__ ) ), '/' );
-			$this->type = 'plugin';
-			$this->dir = trailingslashit( WP_PLUGIN_DIR ) . $this->folder;
-			$this->url = plugins_url( $this->folder );
-		} else {
-			// WTF?
-			error_log( 'PLUGIN/THEME ERROR: Cannot find ' . WP_PLUGIN_DIR . ' or "themes" in ' . __FILE__ );
-		}
-		// Suffix for enqueuing
-		$this->suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
-
-		if ( is_admin() ) {
-			// Admin notices
-			$this->add_action( 'admin_notices', '_admin_notices' );
-		}
-
-		$this->add_action( 'init', 'load_locale' );
-	}
-
+        //remove backslashes for windows machines
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $file = str_replace("\\","/",__FILE__);
+            $plugindir = str_replace("\\","/",WP_PLUGIN_DIR);
+        }
+        else {
+            $file =__FILE__;
+            $plugindir = WP_PLUGIN_DIR;
+        }
+        if ( ! $name )
+            throw new exception( "Please pass the name parameter into the setup method." );
+        $this->name = $name;
+        // Setup the dir and url for this plugin/theme
+        if ( stripos( $file, 'themes' ) ) {
+            // This is a theme
+            $this->type = 'theme';
+            $this->dir = get_stylesheet_directory();
+            $this->url = get_stylesheet_directory_uri();
+        } elseif ( stripos( $file, $plugindir ) !== false ) {
+            // This is a plugin
+            $this->folder = rtrim( basename( dirname( $file  ) ), '/' );
+            $this->type = 'plugin';
+            $this->dir = trailingslashit( $plugindir ) . $this->folder;
+            $this->url = plugins_url( $this->folder );
+        } else {
+            error_log( 'PLUGIN/THEME ERROR: Cannot find ' . $plugindir . ' or "themes" in ' . $file );
+        }
+        // Suffix for enqueuing
+        $this->suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+        if ( is_admin() ) {
+            // Admin notices
+            $this->add_action( 'admin_notices', '_admin_notices' );
+        }
+        $this->add_action( 'init', 'load_locale' );
+    }
 	/**
 	 * Hook called to change the locale directory.
 	 *

@@ -36,7 +36,7 @@ require_once( 'class-ezsmsn-widget.php' );
  */
 class EZSMSN_Widget_Subscribe extends EZSMSN_Widget {
 
-	function  __construct($id_base = false, $name, $widget_options = array(), $control_options = array()) {
+	function  __construct($id_base = false, $name = 'Ez Texting Widget', $widget_options = array(), $control_options = array()) {
         $widget_options = array(
             'description' => __( 'All your readers to subscribe to SMS updates when you add a post. Requires an Ez Texting account.', 'ezsmsn' )
         );
@@ -101,7 +101,7 @@ class EZSMSN_Widget_Subscribe extends EZSMSN_Widget {
                 <a href="<?php echo esc_attr( add_query_arg( array( 'ezsmsn-unsubscribe' => 1 ), home_url() ) ); ?>"><?php _e( 'Unsubscribe', 'ezsmsn' ); ?></a>
             </p>
         </form>
-        <p>Msg&amp;Data rates may apply. To opt out, text STOP to 313131</p>
+        <p>Msg&amp;Data rates may apply. To opt out, reply <strong>STOP</strong> to any message</p>
         <p><a href="http://www.eztexting.com/"><?php _e( 'SMS Marketing', 'ezsmsn' ); ?></a> by Ez Texting</p>
         <?php echo $after_widget; ?>
 <?php
