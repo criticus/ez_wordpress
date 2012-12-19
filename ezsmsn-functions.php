@@ -4,7 +4,7 @@
  * @author     Viktor <viktor@eztexting.com>
  * @copyright  2012 Ez Texting https://www.eztexting.com
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version    1.4
+ * @version    1.4.1
  * @since      1.0
  */
 
@@ -32,68 +32,68 @@ function ezsmsn_url( $path ) {
  */
 function ezsmsn_build_pager_controll($current_page, $page_size = 10, $total_items, $total_page)
 {
-    $base_link = ezsmsn_current_page_url();
+	$base_link = ezsmsn_current_page_url();
 
-    $pager_content  = __('Subscribers', 'ezsmsn') . '&nbsp;:&nbsp;';
-    $pager_content .= ( ( ($current_page) * $page_size ) - $page_size ) + 1 . ' - '. ( ( $current_page ) * $page_size );
-    $pager_content .= '&nbsp;' . __( 'of', 'ezsmsn' ) . '&nbsp;' . $total_items;
+	$pager_content  = __('Subscribers', 'ezsmsn') . '&nbsp;:&nbsp;';
+	$pager_content .= ( ( ($current_page) * $page_size ) - $page_size ) + 1 . ' - '. ( ( $current_page ) * $page_size );
+	$pager_content .= '&nbsp;' . __( 'of', 'ezsmsn' ) . '&nbsp;' . $total_items;
 
-    $base_link = remove_query_arg( array('p', 'pageSize'), $base_link);
+	$base_link = remove_query_arg( array('p', 'pageSize'), $base_link);
 
-    // build first link
-    if( $current_page == 1 )
-        $first_link = '<span class="ezsmsn-first disabled">' . __('First', 'ezsmsn') . '</span>';
-    else
-        $first_link = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            esc_url( $base_link ),
-            'ezsmsn-first',
-            __( 'First', 'ezsmsn' )
-        );
+	// build first link
+	if( $current_page == 1 )
+		$first_link = '<span class="ezsmsn-first disabled">' . __('First', 'ezsmsn') . '</span>';
+	else
+		$first_link = sprintf(
+			'<a href="%s" class="%s">%s</a>',
+			esc_url( $base_link ),
+			'ezsmsn-first',
+			__( 'First', 'ezsmsn' )
+		);
 
-    $pager_content .= '&nbsp;|&nbsp;' . $first_link;
+	$pager_content .= '&nbsp;|&nbsp;' . $first_link;
 
-    //build previous link
-    if( $current_page == 1 )
-        $previous_link = '<span class="ezsmsn-previous disabled">' . __('Previous', 'ezsmsn') . '</span>';
-    else
-        $previous_link = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            esc_url( add_query_arg('p', ( $current_page - 1 ), $base_link) ),
-            'ezsmsn-previous',
-            __('Previous', 'ezsmsn')
-        );
-    
-    $pager_content .= '&nbsp;|&nbsp;' . $previous_link;
+	//build previous link
+	if( $current_page == 1 )
+		$previous_link = '<span class="ezsmsn-previous disabled">' . __('Previous', 'ezsmsn') . '</span>';
+	else
+		$previous_link = sprintf(
+			'<a href="%s" class="%s">%s</a>',
+			esc_url( add_query_arg('p', ( $current_page - 1 ), $base_link) ),
+			'ezsmsn-previous',
+			__('Previous', 'ezsmsn')
+		);
 
-    //build next link
-    if( $current_page == $total_page )
-        $next_page = '<span class="ezsmsn-next disabled">' . __( 'Next', 'ezsmsn' ) . '</span>';
-    else
-        $next_page = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            esc_url( add_query_arg( 'p', ($current_page + 1), $base_link ) ),
-            'ezsmsn-next',
-            __( 'Next', 'ezsmsn' )
-        );
+	$pager_content .= '&nbsp;|&nbsp;' . $previous_link;
 
-    $pager_content .= '&nbsp;|&nbsp;' . $next_page;
+	//build next link
+	if( $current_page == $total_page )
+		$next_page = '<span class="ezsmsn-next disabled">' . __( 'Next', 'ezsmsn' ) . '</span>';
+	else
+		$next_page = sprintf(
+			'<a href="%s" class="%s">%s</a>',
+			esc_url( add_query_arg( 'p', ($current_page + 1), $base_link ) ),
+			'ezsmsn-next',
+			__( 'Next', 'ezsmsn' )
+		);
 
-    //build last link
-    if( $current_page == $total_page)
-        $last_link = '<span class="ezsmsn-last disabled">' . __( 'Last', 'ezsmsn' ) . '</span>';
-    else
-        $last_link = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            esc_url( add_query_arg('p', $total_page, $base_link) ),
-            'ezsmsn-last',
-            __( 'Last', 'ezsmsn' )
-        );
+	$pager_content .= '&nbsp;|&nbsp;' . $next_page;
 
-    $pager_content .= '&nbsp;|&nbsp;' . $last_link;
+	//build last link
+	if( $current_page == $total_page)
+		$last_link = '<span class="ezsmsn-last disabled">' . __( 'Last', 'ezsmsn' ) . '</span>';
+	else
+		$last_link = sprintf(
+			'<a href="%s" class="%s">%s</a>',
+			esc_url( add_query_arg('p', $total_page, $base_link) ),
+			'ezsmsn-last',
+			__( 'Last', 'ezsmsn' )
+		);
 
-    $pager_container = "<div class='ezsmsn-pager'>$pager_content</div>";
-    return $pager_container;
+	$pager_content .= '&nbsp;|&nbsp;' . $last_link;
+
+	$pager_container = "<div class='ezsmsn-pager'>$pager_content</div>";
+	return $pager_container;
 }
 /**
  * get current page url
@@ -102,7 +102,7 @@ function ezsmsn_build_pager_controll($current_page, $page_size = 10, $total_item
  */
 function ezsmsn_current_page_url()
 {
-    return ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	return ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 
 /**

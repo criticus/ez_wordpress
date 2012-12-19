@@ -4,7 +4,7 @@
  * @author     Viktor <viktor@eztexting.com>
  * @copyright  2011 Ez Texting https://www.eztexting.com
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version    1.2
+ * @version    1.4.1
  * @since      1.0
  */
 
@@ -58,12 +58,12 @@ function ezsmsn_send_sms_to_subscribers($message)
 
     $ez_user     = $ezsmsn_options['ez_user'];
     $ez_password = $ezsmsn_options['ez_password'];
-    
+
     $ez_sms_api = new EZSMSN_Sending( $ez_user, $ez_password );
 
     $recipient_counts   = 0;
     $credits            = 0;
-    
+
     $responses = array();
 
     $subscribers = EZSMSN_Subscribers::fetch_all( $page, $patrial_count, false);
@@ -96,12 +96,12 @@ function ezsmsn_send_sms_to_subscribers($message)
         if( !empty($opt_outs) ) {
             $intersect = array_intersect($subscribers_assoc, $opt_outs);
             $subscriber_ids = array_keys($intersect);
-            
+
             if( ! empty ($subscriber_ids) )
                 EZSMSN_Subscribers::opt_outs($subscriber_ids);
         }
     }
-    
+
     $return_value->recipient_counts = $recipient_counts;
     $return_value->credits          = $credits;
 

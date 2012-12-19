@@ -1,7 +1,7 @@
 jQuery( function( $ ) {
-    
-    var messase, lengths;
-    
+
+    var message, lengths;
+
     $(document).ready(function(){
         $('#ezsmsn_message_template span').click(function(){
 
@@ -32,12 +32,10 @@ jQuery( function( $ ) {
         if($('#ezsmsn_new_post_message, #ezsmsn_message').length) {
             init_options();
         }
-        
+
         if($('.column-cb input:checkbox').length) {
             selectSubscribers();
         }
-
-        $('#adminmenu a.toplevel_page_ezsmsn_main').html(ezsmsn.top_menu_label)
     })
 
     function selectSubscribers()
@@ -62,9 +60,9 @@ jQuery( function( $ ) {
                      .replace(/{post_title}/ig, lengths.post_title)
                      .replace(/{post_url}/ig, lengths.post_url);
 		}
-        
+
         new_length = str.length;
-        $('#ezsmsn_counter').text( messase.replace( '160', (160-new_length) ) );
+        $('#ezsmsn_counter').text( message.replace( '160', (160-new_length) ) );
     }
 
     function init_options() {
@@ -75,12 +73,12 @@ jQuery( function( $ ) {
 		if ( $('#ezsmsn_new_post_message').length ) {
             lengths.post_author = getOrigStrLen(parseInt($('#ezsmsn_post_author .value').text()))
             lengths.post_title  = getOrigStrLen(parseInt($('#ezsmsn_post_title .value').text()))
-            lengths.post_url    = getOrigStrLen(parseInt($('#ezsmsn_post_url .value').text()))             
+            lengths.post_url    = getOrigStrLen(parseInt($('#ezsmsn_post_url .value').text()))
 		}
 
-       
 
-        messase = $('#ezsmsn_counter').text()
+
+        message = $('#ezsmsn_counter').text()
         $( '#ezsmsn_new_post_message, #ezsmsn_message' ).each( update_counter ).keyup( update_counter );
 
     }
