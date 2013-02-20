@@ -225,6 +225,10 @@ class EZSMSN extends EZSMSN_Plugin {
 				);
 
 			}
+
+			if( $response->response->get_status() == 403 ) {
+				$this->set_admin_error(__(implode('<br>', $response->response->get_errors()), 'ezsmsn'));
+			}
 		} else {
 			$this->set_admin_notice( sprintf( __('Your Message has been sent to %d subscribers.', 'ezsmsn'), $response->recipient_counts ) );
 		}
@@ -336,8 +340,12 @@ class EZSMSN extends EZSMSN_Plugin {
 	public function transition_post_status($new_status, $old_status, $post) {
 		if( $new_status == 'publish' && $old_status != 'publish' && (bool)$this->get_option('ezsmsn_new_post') ) {
 			$message  = $this->get_original_message( $this->new_post_message(), $post );
-			ezsmsn_send_sms_to_subscribers( $message );
-		}
+			$response = ezsmsn_send_sms_to_subscribers( $message );
+
+            if( $response->failed && $response->response->get_status() == 403 ) {
+                $this->set_admin_error(__('EzTexting: ' . implode('<br>', $response->response->get_errors()), 'ezsmsn'));
+            }
+        }
 	}
 
 	/**

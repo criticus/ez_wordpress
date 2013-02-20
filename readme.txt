@@ -2,8 +2,8 @@
 Contributors: eztexting
 Tags: sms, mobile, alerts, plugin, notification, phone
 Requires at least: 2.0.2
-Tested up to: 3.5
-Stable tag: tags/1.4.1
+Tested up to: 3.5.1
+Stable tag: tags/1.5.0
 
 This plugin allows your visitors to sign up to receive SMS text message notifications whenever you publish a new post.
 

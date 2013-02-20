@@ -117,7 +117,7 @@ class EZSMSN_Message {
      */
     public function __construct($phone_numbers, $message, $type = self::EXPRESS) {
 
-        if ( ! is_array($phoneNumbers) )
+        if ( ! is_array($phone_numbers) )
             $phone_numbers = (array) $phone_numbers;
 
 
@@ -188,7 +188,7 @@ class EZSMSN_Message {
      * @return EZSMSN_Message
      */
     public function set_phone_numbers($phone_numbers) {
-        if ( ! is_array($phoneNumbers) ) {
+        if ( ! is_array($phone_numbers) ) {
             $phone_numbers = (array) $phone_numbers;
         }
 
